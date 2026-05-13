@@ -5,7 +5,7 @@ use std::io::{self, Write};
 use std::process::Command;
 
 pub fn main() {
-    println!("\nSelected: Vite React project\n");
+    println!("\nSelected: Vue.js project\n");
 
     print!("\nEnter Name of Project: ");
     io::stdout().flush().expect("Failed to flush stdout");
@@ -27,36 +27,27 @@ pub fn main() {
             Ok(_) => println!("Successfully created folder: {}", folder_path.display()),
             Err(e) => eprintln!("Error creating folder: {}", e),
         }
-    }                                                                 
+    }
 
     let project_path = folder_path.join(input);
     if project_path.exists() {
         println!("\nProject {} already exists in {}", input, folder_path.display());
     } else {
-        println!("Creating Vite React project {}", input);
+        println!("Creating Vue.js project {}", input);
         let status = if cfg!(target_os = "windows") {
             Command::new("cmd")
-                .args(&[
-                    "/C",
-                    "npm",
-                    "create",
-                    "vite@latest",
-                    input,
-                    "--",
-                    "--template",
-                    "react",
-                ])
+                .args(&["/C", "npm", "create", "vue@latest", input, "--", "--default"])
                 .current_dir(&folder_path)
                 .status()
         } else {
             Command::new("npm")
-                .args(&["create", "vite@latest", input, "--", "--template", "react"])
+                .args(&["create", "vue@latest", input, "--", "--default"])
                 .current_dir(&folder_path)
                 .status()
         };
 
         match status {
-            Ok(s) if s.success() => println!("Successfully created Vite React project!"),
+            Ok(s) if s.success() => println!("Successfully created Vue.js project!"),
             Ok(s) => eprintln!("Failed to create project. Exit status: {}", s),
             Err(e) => eprintln!("Failed to execute npm command: {}", e),
         }
