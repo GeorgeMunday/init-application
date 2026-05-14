@@ -1,4 +1,3 @@
-use std::env;
 use std::io::{self, Write};
 use std::path::Path;
 use std::process::Command;

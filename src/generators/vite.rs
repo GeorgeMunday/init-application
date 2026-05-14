@@ -1,6 +1,3 @@
-use std::env;
-use std::fs;
-use std::path::Path;
 use std::io::{self, Write};
 use std::process::Command;
 use super::helpers::folder;

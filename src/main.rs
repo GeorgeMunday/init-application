@@ -1,4 +1,5 @@
 mod generators;
+mod tests;
 
 use std::io::{self, Write};
 use std::process::Command;
@@ -128,16 +129,45 @@ fn dependencies() {
         .expect("Failed to read input");
 }
 
-fn test() {
+fn tests() {
+    loop {
     clear_console();
-    println!("");
-    print!("\n{}Press Enter to continue...{}", YELLOW, RESET);
+    println!("{}", styled("TESTS", BOLD));
+    println!("{}", styled("----", CYAN));
+    println!("1  node -v");
+    println!("2  dotnet --version");
+    println!("3  cargo --version");
+    println!("4  python --version");
+    println!("B  Back to main menu");
+    print!("\n{}Enter option:{}", YELLOW, RESET);
     io::stdout().flush().expect("Failed to flush stdout");
 
     let mut input: String = String::new();
     io::stdin()
         .read_line(&mut input)
         .expect("Failed to read input");
+    match input.trim().to_lowercase().as_str() {
+            "1" => {
+                tests::node::main();
+            }
+            "2" => {
+                tests::dotnet::main();
+            }
+            "3" =>{
+                tests::cargo::main();
+            }
+            "4" => {
+                tests::python::main();
+            }
+            "b" | "B" => {
+                return;
+            }
+            _ => {           
+                println!("\nInvalid option. Please try again.\n");  
+                time_sleep( 1);
+            }
+        }
+    }
 }
 
 fn main() {
@@ -189,13 +219,16 @@ fn main() {
             "13" => {
                 generators::javascript::main();
             }
-            "d" => {
-                dependencies();
-            }
-            "h" => {
+            "h" | "H" => {
                 help();
             }
-            "q" => {
+            "t" | "T" => {
+                tests();
+            }
+            "d" | "D" => {
+                dependencies();
+            }
+            "q" | "Q" => {
                 println!("\nGoodbye!");
                 time_sleep( 1);
                 clear_console();
