@@ -1,6 +1,7 @@
 # init-application
 
 A Rust CLI for creating starter project scaffolds from a simple menu.
+This project is set up with [cargo-dist](https://axodotdev.github.io/cargo-dist/), which will generate GitHub Releases with downloadable binaries and installers.
 
 ## What it does
 
@@ -29,18 +30,66 @@ cargo run
 cargo build
 ```
 
-## Downloadable Releases
-
-This project is set up with [cargo-dist](https://axodotdev.github.io/cargo-dist/), which will generate GitHub Releases with downloadable binaries and installers.
-
-After you publish a tagged release, users can:
-
-1. Download the archive or installer from GitHub Releases
-2. Extract or install it
-3. Run it from a terminal after it is on `PATH`, for example:
-
+## Installation
+ 
+### Windows
+ 
+**1. Download the source archive:**
+ 
+```powershell
+curl.exe -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.0.zip -o init-application-v0.1.0.zip
+```
+ 
+> Note: Use `curl.exe` rather than `curl` in PowerShell, as `curl` is an alias for `Invoke-WebRequest` and does not support the same flags.
+ 
+**2. Extract the archive:**
+ 
+```powershell
+Expand-Archive -Path init-application-v0.1.0.zip -DestinationPath init-application-v0.1.0
+```
+ 
+**3. Install via Cargo:**
+ 
+```powershell
+cargo install --path init-application-v0.1.0\init-application-0.1.0
+```
+ 
+**4. Run:**
+ 
 ```powershell
 init-application
 ```
-
-For publishing, the generated workflow is in [.github/workflows/release.yml](.github/workflows/release.yml).
+ 
+---
+ 
+### macOS / Linux
+ 
+**1. Download the source archive:**
+ 
+```bash
+curl -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.0.tar.gz -o init-application-v0.1.0.tar.gz
+```
+ 
+**2. Extract the archive:**
+ 
+```bash
+tar -xzf init-application-v0.1.0.tar.gz
+```
+ 
+**3. Install via Cargo:**
+ 
+```bash
+cargo install --path init-application-v0.1.0/init-application-0.1.0
+```
+ 
+**4. Run:**
+ 
+```bash
+init-application
+```
+ 
+---
+ 
+## Prerequisites
+ 
+- [Rust and Cargo](https://www.rust-lang.org/tools/install) must be installed.
