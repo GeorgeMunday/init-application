@@ -3,6 +3,7 @@ use std::fs;
 use std::path::Path;
 use std::io::{self, Write};
 use std::process::Command;
+use super::helpers::folder;
 
 pub fn main() {
     println!("\nSelected: Vite React project\n");
@@ -17,21 +18,13 @@ pub fn main() {
 
     let input: &str = input.trim();
     
-    let home_dir = env::var("USERPROFILE").or_else(|_| env::var("HOME")).expect("Could not find home directory");
-    let folder_path = Path::new(&home_dir).join("projects");
-    
-    if folder_path.exists() {
-        println!("Folder already exists: {}", folder_path.display());
-    } else {
-        match fs::create_dir_all(&folder_path) {
-            Ok(_) => println!("Successfully created folder: {}", folder_path.display()),
-            Err(e) => eprintln!("Error creating folder: {}", e),
-        }
-    }                                                                 
-
-    let project_path = folder_path.join(input);
+    let project_path = match folder::project_path(input) {
+        Ok(p) => p,
+        Err(e) => { eprintln!("Failed to determine project path: {}", e); return; }
+    };
     if project_path.exists() {
-        println!("\nProject {} already exists in {}", input, folder_path.display());
+        let base = project_path.parent().map(|p| p.display().to_string()).unwrap_or_else(|| ".".to_string());
+        println!("\nProject {} already exists in {}", input, base);
     } else {
         println!("Creating Vite React project {}", input);
         let status = if cfg!(target_os = "windows") {
@@ -46,12 +39,12 @@ pub fn main() {
                     "--template",
                     "react",
                 ])
-                .current_dir(&folder_path)
+                .current_dir(project_path.parent().unwrap())
                 .status()
         } else {
             Command::new("npm")
                 .args(&["create", "vite@latest", input, "--", "--template", "react"])
-                .current_dir(&folder_path)
+                .current_dir(project_path.parent().unwrap())
                 .status()
         };
 

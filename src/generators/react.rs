@@ -3,6 +3,7 @@ use std::fs;
 use std::path::Path;
 use std::io::{self, Write};
 use std::process::Command;
+use super::helpers::{folder, code};
 
 pub fn main() {
     println!("\nSelected: React project\n");
@@ -17,17 +18,10 @@ pub fn main() {
 
     let input: &str = input.trim();
     
-    let home_dir = env::var("USERPROFILE").or_else(|_| env::var("HOME")).expect("Could not find home directory");
-    let folder_path = Path::new(&home_dir).join("projects");
-    
-    if folder_path.exists() {
-        println!("Folder already exists: {}", folder_path.display());
-    } else {
-        match fs::create_dir_all(&folder_path) {
-            Ok(_) => println!("Successfully created folder: {}", folder_path.display()),
-            Err(e) => eprintln!("Error creating folder: {}", e),
-        }
-    }                                                                 
+    let folder_path = match folder::ensure_projects_dir() {
+        Ok(p) => p,
+        Err(e) => { eprintln!("Failed to ensure projects dir: {}", e); return; }
+    };
 
     let project_path = folder_path.join(input);
     if project_path.exists() {
@@ -54,9 +48,19 @@ pub fn main() {
         }
     }
 
+    print!("\nWould you like to open this project in VS Code and use helpers/code.rs for that? (y/N): ");
+    io::stdout().flush().expect("Failed to flush stdout");
+    let mut answer = String::new();
+    io::stdin().read_line(&mut answer).unwrap();
+    if answer.trim().to_lowercase().starts_with('y') {
+        match code::open(project_path.to_str().unwrap_or("")) {
+            Ok(_) => println!("Opened project in VS Code."),
+            Err(e) => eprintln!("Failed to open VS Code: {}", e),
+        }
+    }
+
     print!("\nPress Anything to continue: ");
     io::stdout().flush().expect("Failed to flush stdout");
-
     let mut input: String = String::new();
     io::stdin()
         .read_line(&mut input)
