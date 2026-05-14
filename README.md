@@ -28,3 +28,19 @@ cargo run
 ```bash
 cargo build
 ```
+
+## Downloadable Releases
+
+This project is set up with [cargo-dist](https://axodotdev.github.io/cargo-dist/), which will generate GitHub Releases with downloadable binaries and installers.
+
+After you publish a tagged release, users can:
+
+1. Download the archive or installer from GitHub Releases
+2. Extract or install it
+3. Run it from a terminal after it is on `PATH`, for example:
+
+```powershell
+init-application
+```
+
+For publishing, the generated workflow is in [.github/workflows/release.yml](.github/workflows/release.yml).

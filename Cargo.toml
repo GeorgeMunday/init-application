@@ -2,5 +2,11 @@
 name = "init-application"
 version = "0.1.0"
 edition = "2024"
+repository = "https://github.com/GeorgeMunday/init-application"
 
 [dependencies]
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
