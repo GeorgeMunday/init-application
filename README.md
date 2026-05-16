@@ -37,7 +37,7 @@ cargo build
 **1. Download the source archive:**
  
 ```powershell
-curl.exe -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.0.zip -o init-application-v0.1.0.zip
+curl.exe -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.1.zip -o init-application-v0.1.1.zip
 ```
  
 > Note: Use `curl.exe` rather than `curl` in PowerShell, as `curl` is an alias for `Invoke-WebRequest` and does not support the same flags.
@@ -45,13 +45,13 @@ curl.exe -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v
 **2. Extract the archive:**
  
 ```powershell
-Expand-Archive -Path init-application-v0.1.0.zip -DestinationPath init-application-v0.1.0
+Expand-Archive -Path init-application-v0.1.1.zip -DestinationPath init-application-v0.1.1
 ```
  
 **3. Install via Cargo:**
  
 ```powershell
-cargo install --path init-application-v0.1.0\init-application-0.1.0
+cargo install --path init-application-v0.1.1\init-application-0.1.1
 ```
  
 **4. Run:**
@@ -67,19 +67,19 @@ init-application
 **1. Download the source archive:**
  
 ```bash
-curl -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.0.tar.gz -o init-application-v0.1.0.tar.gz
+curl -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.1.tar.gz -o init-application-v0.1.1.tar.gz
 ```
  
 **2. Extract the archive:**
  
 ```bash
-tar -xzf init-application-v0.1.0.tar.gz
+tar -xzf init-application-v0.1.1.tar.gz
 ```
  
 **3. Install via Cargo:**
  
 ```bash
-cargo install --path init-application-v0.1.0/init-application-0.1.0
+cargo install --path init-application-v0.1.1/init-application-0.1.1
 ```
  
 **4. Run:**
