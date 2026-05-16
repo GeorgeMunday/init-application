@@ -19,8 +19,6 @@ pub fn ensure_projects_dir() -> io::Result<PathBuf> {
     Ok(folder_path)
 }
 
-/// Return the full project path for `project_name` under the user's projects directory.
-/// Ensures the base `projects` directory exists but does not create the project folder itself.
 pub fn project_path(project_name: &str) -> io::Result<PathBuf> {
     let base = ensure_projects_dir()?;
     Ok(base.join(project_name))

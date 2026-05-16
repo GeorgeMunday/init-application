@@ -1,0 +1,179 @@
+[
+  {
+    "name": "Next.js",
+    "description": "Full-stack React framework",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "create-next-app@latest", "{project_name}", "--yes"],
+    "args_linux": ["create-next-app@latest", "{project_name}", "--yes"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Angular",
+    "description": "Lean component-driven app",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "-p", "@angular/cli", "ng", "new", "{project_name}", "--defaults", "--skip-git"],
+    "args_linux": ["-p", "@angular/cli", "ng", "new", "{project_name}", "--defaults", "--skip-git"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Blazor",
+    "description": "C# web UI application",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "dotnet",
+    "args_windows": ["/C", "dotnet", "new", "blazorwasm", "-o", "{project_name}"],
+    "args_linux": ["new", "blazorwasm", "-o", "{project_name}"],
+    "dependencies": [
+      {"name": ".NET SDK", "link": "https://dotnet.microsoft.com/download"}
+    ]
+  },
+    {
+    "name": "Django",
+    "description": "High-level Python web framework",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "django-admin",
+    "args_windows": ["/C", "django-admin", "startproject", "{project_name}"],
+    "args_linux": ["startproject", "{project_name}"],
+    "dependencies": [
+      {"name": "Python", "link": "https://www.python.org/downloads/"}
+    ]
+  }
+   ,
+    {
+    "name": "Vite React",
+    "description": "Fast modern React starter",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npm",
+    "args_windows": ["/C", "npm", "create", "vite@latest", "{project_name}", "--", "--template", "react"],
+    "args_linux": ["create", "vite@latest", "{project_name}", "--", "--template", "react"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "C# CLI",
+    "description": "Dotnet console application",
+    "category": "CliApplication",
+    "tool_windows": "cmd",
+    "tool_linux": "dotnet",
+    "args_windows": ["/C", "dotnet", "new", "console", "-n", "{project_name}"],
+    "args_linux": ["new", "console", "-n", "{project_name}"],
+    "dependencies": [
+      {"name": ".NET SDK", "link": "https://dotnet.microsoft.com/download"}
+    ]
+  },
+  {
+    "name": "Rust CLI",
+    "description": "Native command-line project",
+    "category": "CliApplication",
+    "tool_windows": "cmd",
+    "tool_linux": "cargo",
+    "args_windows": ["/C", "cargo", "new", "{project_name}"],
+    "args_linux": ["new", "{project_name}"],
+    "dependencies": [
+      {"name": "Rust/Cargo", "link": "https://www.rust-lang.org/tools/install"}
+    ]
+  }
+  ,
+  {
+    "name": "Python CLI",
+    "description": "Python CLI project using Poetry",
+    "category": "CliApplication",
+    "tool_windows": "cmd",
+    "tool_linux": "poetry",
+    "args_windows": ["/C", "poetry", "new", "{project_name}"],
+    "args_linux": ["new", "{project_name}"],
+    "dependencies": [
+      {"name": "Poetry", "link": "https://python-poetry.org/"}
+    ]
+  }
+  ,
+  {
+    "name": "Express.js",
+    "description": "Minimal Node.js backend with Express",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "express-generator", "{project_name}"],
+    "args_linux": ["express-generator", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+    {
+    "name": "Spring Boot",
+    "description": "Java backend using Spring Initializr",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "curl",
+    "args_windows": ["/C", "curl", "-s", "https://start.spring.io/starter.zip", "-d", "name={project_name}", "-o", "{project_name}.zip"],
+    "args_linux": ["-s", "https://start.spring.io/starter.zip", "-d", "name={project_name}", "-o", "{project_name}.zip"],
+    "dependencies": [
+      {"name": "Spring Initializr", "link": "https://start.spring.io/"},
+      {"name": "Java JDK", "link": "https://adoptium.net/"}
+    ]
+  }
+  ,
+  {
+    "name": "Actix-web",
+    "description": "Rust backend using Actix-web (cargo new + add dependency)",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "cargo",
+    "args_windows": ["/C", "cargo", "new", "{project_name}"],
+    "args_linux": ["new", "{project_name}"],
+    "dependencies": [
+      {"name": "Rust/Cargo", "link": "https://www.rust-lang.org/tools/install"}
+    ]
+  }
+  ,
+  {
+    "name": "Electron",
+    "description": "Cross-platform desktop app using Electron",
+    "category": "Desktop",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "create-electron-app", "{project_name}"],
+    "args_linux": ["create-electron-app", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  }
+  ,
+  {
+    "name": "Tauri",
+    "description": "Lightweight desktop apps using Tauri",
+    "category": "Desktop",
+    "tool_windows": "cmd",
+    "tool_linux": "npm",
+    "args_windows": ["/C", "npm", "create", "tauri-app@latest", "{project_name}"],
+    "args_linux": ["create", "tauri-app@latest", "{project_name}"],
+    "dependencies": [
+      {"name": "Rust/Cargo", "link": "https://www.rust-lang.org/tools/install"},
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  }
+  ,
+  {
+    "name": "NW.js",
+    "description": "Desktop apps with NW.js",
+    "category": "Desktop",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "create-nw-app", "{project_name}"],
+    "args_linux": ["create-nw-app", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  }
+]
