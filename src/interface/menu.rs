@@ -18,8 +18,9 @@ pub fn welcome(templates: &[ProjectTemplate]) -> (Vec<String>, HashMap<String, V
         }
         category_map.entry(t.category.clone()).or_default().push(idx);
     }
-
-    println!("\n{}", styled("SELECT A CATEGORY:", BOLD));
+    
+    println!();
+    section_title("SELECT CATEGORY");
     for (i, category) in categories.iter().enumerate() {
         println!("{}. {}", i + 1, category);
     }
