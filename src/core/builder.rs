@@ -1,7 +1,7 @@
 use std::io::{self, Write};
 use std::process::Command;
 use crate::helpers::{folder, code};
-use crate::ProjectTemplate;
+use crate::core::template::ProjectTemplate;
 
 pub fn generate_project(template: &ProjectTemplate) {
     println!("\nSelected: {} project\n", template.name);
@@ -51,12 +51,10 @@ pub fn generate_project(template: &ProjectTemplate) {
                 .args_windows
                 .iter()
                 .map(|arg| {
-
                     arg.replace(
                         "{project_name}",
                         input,
                     )
-
                 })
                 .collect();
 
@@ -64,29 +62,23 @@ pub fn generate_project(template: &ProjectTemplate) {
                 .args_linux
                 .iter()
                 .map(|arg| {
-
                     arg.replace(
                         "{project_name}",
                         input,
                     )
-
                 })
                 .collect();
 
             let status = if cfg!(target_os = "windows") {
-
                 Command::new(&template.tool_windows)
                     .args(&args_windows)
                     .current_dir(&folder_path)
                     .status()
-
             } else {
-
                 Command::new(&template.tool_linux)
                     .args(&args_linux)
                     .current_dir(&folder_path)
                     .status()
-
             };
 
             match status {
