@@ -1,14 +1,113 @@
 [
   {
-    "name": "Next.js",
-    "description": "Full-stack React framework",
-    "category": "WebFramework",
+    "name": "Actix-web",
+    "description": "Rust backend using Actix-web (cargo new + add dependency)",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "cargo",
+    "args_windows": ["/C", "cargo", "new", "{project_name}"],
+    "args_linux": ["new", "{project_name}"],
+    "dependencies": [
+      {"name": "Rust/Cargo", "link": "https://www.rust-lang.org/tools/install"}
+    ]
+  },
+  {
+    "name": "ASP.NET Core WebAPI",
+    "description": "Microsoft .NET web API project",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "dotnet",
+    "args_windows": ["/C", "dotnet", "new", "webapi", "-o", "{project_name}"],
+    "args_linux": ["new", "webapi", "-o", "{project_name}"],
+    "dependencies": [
+      {"name": ".NET SDK", "link": "https://dotnet.microsoft.com/download"}
+    ]
+  },
+  {
+    "name": "Express.js",
+    "description": "Minimal Node.js backend with Express",
+    "category": "BackendFramework",
     "tool_windows": "cmd",
     "tool_linux": "npx",
-    "args_windows": ["/C", "npx", "create-next-app@latest", "{project_name}", "--yes"],
-    "args_linux": ["create-next-app@latest", "{project_name}", "--yes"],
+    "args_windows": ["/C", "npx", "express-generator", "{project_name}"],
+    "args_linux": ["express-generator", "{project_name}"],
     "dependencies": [
       {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Fastify",
+    "description": "Fast Node.js web framework (Fastify)",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npm",
+    "args_windows": ["/C", "npm", "create", "fastify", "{project_name}"],
+    "args_linux": ["create", "fastify", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Koa",
+    "description": "Lightweight Node.js framework (Koa)",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "koa-generator", "{project_name}"],
+    "args_linux": ["koa-generator", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Laravel",
+    "description": "PHP framework for web artisans (Laravel)",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "composer",
+    "args_windows": ["/C", "composer", "create-project", "laravel/laravel", "{project_name}"],
+    "args_linux": ["create-project", "laravel/laravel", "{project_name}"],
+    "dependencies": [
+      {"name": "PHP", "link": "https://www.php.net/"},
+      {"name": "Composer", "link": "https://getcomposer.org/"}
+    ]
+  },
+  {
+    "name": "NestJS",
+    "description": "Progressive Node.js framework (NestJS)",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "-p", "@nestjs/cli", "nest", "new", "{project_name}", "--skip-install"],
+    "args_linux": ["-p", "@nestjs/cli", "nest", "new", "{project_name}", "--skip-install"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Ruby on Rails",
+    "description": "Productive web framework (Rails)",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "rails",
+    "args_windows": ["/C", "rails", "new", "{project_name}"],
+    "args_linux": ["new", "{project_name}"],
+    "dependencies": [
+      {"name": "Ruby", "link": "https://www.ruby-lang.org/"},
+      {"name": "Rails", "link": "https://rubyonrails.org/"}
+    ]
+  },
+  {
+    "name": "Spring Boot",
+    "description": "Java backend using Spring Initializr",
+    "category": "BackendFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "curl",
+    "args_windows": ["/C", "curl", "-s", "https://start.spring.io/starter.zip", "-d", "name={project_name}", "-o", "{project_name}.zip"],
+    "args_linux": ["-s", "https://start.spring.io/starter.zip", "-d", "name={project_name}", "-o", "{project_name}.zip"],
+    "dependencies": [
+      {"name": "Spring Initializr", "link": "https://start.spring.io/"},
+      {"name": "Java JDK", "link": "https://adoptium.net/"}
     ]
   },
   {
@@ -35,7 +134,7 @@
       {"name": ".NET SDK", "link": "https://dotnet.microsoft.com/download"}
     ]
   },
-    {
+  {
     "name": "Django",
     "description": "High-level Python web framework",
     "category": "WebFramework",
@@ -46,9 +145,56 @@
     "dependencies": [
       {"name": "Python", "link": "https://www.python.org/downloads/"}
     ]
-  }
-   ,
-    {
+  },
+  {
+    "name": "Next.js",
+    "description": "Full-stack React framework",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npm",
+    "args_windows": ["/C", "npm", "create", "next-app@latest", "{project_name}", "--yes"],
+    "args_linux": ["create-next-app@latest", "{project_name}", "--yes"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Nuxt",
+    "description": "Full-stack Vue framework (Nuxt)",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "nuxi@latest", "init", "{project_name}"],
+    "args_linux": ["nuxi@latest", "init", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Remix",
+    "description": "Full-stack React framework (Remix)",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "create-remix@latest", "{project_name}"],
+    "args_linux": ["create-remix@latest", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "SvelteKit",
+    "description": "Svelte app framework (SvelteKit)",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npm",
+    "args_windows": ["/C", "npm", "create", "svelte@latest", "{project_name}"],
+    "args_linux": ["create", "svelte@latest", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
     "name": "Vite React",
     "description": "Fast modern React starter",
     "category": "WebFramework",
@@ -56,6 +202,18 @@
     "tool_linux": "npm",
     "args_windows": ["/C", "npm", "create", "vite@latest", "{project_name}", "--", "--template", "react"],
     "args_linux": ["create", "vite@latest", "{project_name}", "--", "--template", "react"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
+  {
+    "name": "Vite Vue",
+    "description": "Fast Vue 3 starter (Vite)",
+    "category": "WebFramework",
+    "tool_windows": "cmd",
+    "tool_linux": "npm",
+    "args_windows": ["/C", "npm", "create", "vite@latest", "{project_name}", "--", "--template", "vue"],
+    "args_linux": ["create", "vite@latest", "{project_name}", "--", "--template", "vue"],
     "dependencies": [
       {"name": "Node.js", "link": "https://nodejs.org/"}
     ]
@@ -73,19 +231,6 @@
     ]
   },
   {
-    "name": "Rust CLI",
-    "description": "Native command-line project",
-    "category": "CliApplication",
-    "tool_windows": "cmd",
-    "tool_linux": "cargo",
-    "args_windows": ["/C", "cargo", "new", "{project_name}"],
-    "args_linux": ["new", "{project_name}"],
-    "dependencies": [
-      {"name": "Rust/Cargo", "link": "https://www.rust-lang.org/tools/install"}
-    ]
-  }
-  ,
-  {
     "name": "Python CLI",
     "description": "Python CLI project using Poetry",
     "category": "CliApplication",
@@ -96,38 +241,11 @@
     "dependencies": [
       {"name": "Poetry", "link": "https://python-poetry.org/"}
     ]
-  }
-  ,
-  {
-    "name": "Express.js",
-    "description": "Minimal Node.js backend with Express",
-    "category": "BackendFramework",
-    "tool_windows": "cmd",
-    "tool_linux": "npx",
-    "args_windows": ["/C", "npx", "express-generator", "{project_name}"],
-    "args_linux": ["express-generator", "{project_name}"],
-    "dependencies": [
-      {"name": "Node.js", "link": "https://nodejs.org/"}
-    ]
   },
-    {
-    "name": "Spring Boot",
-    "description": "Java backend using Spring Initializr",
-    "category": "BackendFramework",
-    "tool_windows": "cmd",
-    "tool_linux": "curl",
-    "args_windows": ["/C", "curl", "-s", "https://start.spring.io/starter.zip", "-d", "name={project_name}", "-o", "{project_name}.zip"],
-    "args_linux": ["-s", "https://start.spring.io/starter.zip", "-d", "name={project_name}", "-o", "{project_name}.zip"],
-    "dependencies": [
-      {"name": "Spring Initializr", "link": "https://start.spring.io/"},
-      {"name": "Java JDK", "link": "https://adoptium.net/"}
-    ]
-  }
-  ,
   {
-    "name": "Actix-web",
-    "description": "Rust backend using Actix-web (cargo new + add dependency)",
-    "category": "BackendFramework",
+    "name": "Rust CLI",
+    "description": "Native command-line project",
+    "category": "CliApplication",
     "tool_windows": "cmd",
     "tool_linux": "cargo",
     "args_windows": ["/C", "cargo", "new", "{project_name}"],
@@ -135,8 +253,7 @@
     "dependencies": [
       {"name": "Rust/Cargo", "link": "https://www.rust-lang.org/tools/install"}
     ]
-  }
-  ,
+  },
   {
     "name": "Electron",
     "description": "Cross-platform desktop app using Electron",
@@ -148,8 +265,19 @@
     "dependencies": [
       {"name": "Node.js", "link": "https://nodejs.org/"}
     ]
-  }
-  ,
+  },
+  {
+    "name": "NW.js",
+    "description": "Desktop apps with NW.js",
+    "category": "Desktop",
+    "tool_windows": "cmd",
+    "tool_linux": "npx",
+    "args_windows": ["/C", "npx", "create-nw-app", "{project_name}"],
+    "args_linux": ["create-nw-app", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"}
+    ]
+  },
   {
     "name": "Tauri",
     "description": "Lightweight desktop apps using Tauri",
@@ -162,16 +290,40 @@
       {"name": "Rust/Cargo", "link": "https://www.rust-lang.org/tools/install"},
       {"name": "Node.js", "link": "https://nodejs.org/"}
     ]
-  }
-  ,
+  },
   {
-    "name": "NW.js",
-    "description": "Desktop apps with NW.js",
-    "category": "Desktop",
+    "name": "Flutter",
+    "description": "Cross-platform mobile SDK (Flutter)",
+    "category": "Mobile",
+    "tool_windows": "cmd",
+    "tool_linux": "flutter",
+    "args_windows": ["/C", "flutter", "create", "{project_name}"],
+    "args_linux": ["create", "{project_name}"],
+    "dependencies": [
+      {"name": "Flutter SDK", "link": "https://docs.flutter.dev/get-started/install"}
+    ]
+  },
+  {
+    "name": "React Native",
+    "description": "Cross-platform mobile apps with React Native",
+    "category": "Mobile",
     "tool_windows": "cmd",
     "tool_linux": "npx",
-    "args_windows": ["/C", "npx", "create-nw-app", "{project_name}"],
-    "args_linux": ["create-nw-app", "{project_name}"],
+    "args_windows": ["/C", "npx", "react-native@latest", "init", "{project_name}"],
+    "args_linux": ["react-native@latest", "init", "{project_name}"],
+    "dependencies": [
+      {"name": "Node.js", "link": "https://nodejs.org/"},
+      {"name": "React Native CLI", "link": "https://reactnative.dev/docs/environment-setup"}
+    ]
+  },
+  {
+    "name": "Playwright",
+    "description": "Cross-browser end-to-end testing",
+    "category": "Testing",
+    "tool_windows": "cmd",
+    "tool_linux": "npm",
+    "args_windows": ["/C", "npm", "init", "playwright@latest", "--", "--yes"],
+    "args_linux": ["init", "playwright@latest", "--", "--yes"],
     "dependencies": [
       {"name": "Node.js", "link": "https://nodejs.org/"}
     ]
