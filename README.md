@@ -1,95 +1,67 @@
 # init-application
 
-A Rust CLI for creating starter project scaffolds from a simple menu.
-This project is set up with [cargo-dist](https://axodotdev.github.io/cargo-dist/), which will generate GitHub Releases with downloadable binaries and installers.
+A Rust-powered CLI tool to quickly initialize project scaffolds from an interactive menu.
 
-## What it does
+[![Release](https://github.com/GeorgeMunday/init-application/actions/workflows/release.yml/badge.svg)](https://github.com/GeorgeMunday/init-application/actions/workflows/release.yml)
 
-- Creates frontend app starters like Next.js, React, Vue, Svelte, Angular, and Vite
-- Creates CLI starters for Rust, Python, C#, TypeScript, and JavaScript
-- Includes dependency and help screens inside the terminal menu
-- Can optionally open the generated project in VS Code
+## 🚀 Features
 
-## Requirements
+- **Interactive Menu:** Easy-to-use CLI interface.
+- **Frontend Templates:** Next.js, React, Vue, Svelte, Angular, Vite.
+- **Backend/CLI Templates:** Rust, Python, C#, TypeScript, JavaScript.
+- **Environment Checks:** Automatically checks for required tools like Node.js, Python, and .NET.
+- **VS Code Integration:** Optionally opens your new project directly in VS Code.
 
-- Rust toolchain
-- Node.js for the JavaScript and frontend templates
-- Python for the Python test option
-- .NET SDK for the C# and Blazor options
-- VS Code if you want the open-in-editor prompt to work
+## 📦 Installation
 
-## Run
-
-```bash
-cargo run
-```
-
-## Build
-
-```bash
-cargo build
-```
-
-## Installation
- 
-### Windows
- 
-**1. Download the source archive:**
- 
+### Windows (PowerShell)
+Install via the official installer:
 ```powershell
-curl.exe -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.5.zip -o init-application-v0.1.5.zip
+irm https://github.com/GeorgeMunday/init-application/releases/latest/download/init-application-installer.ps1 | iex
 ```
- 
-> Note: Use `curl.exe` rather than `curl` in PowerShell, as `curl` is an alias for `Invoke-WebRequest` and does not support the same flags.
- 
-**2. Extract the archive:**
- 
-```powershell
-Expand-Archive -Path init-application-v0.1.5.zip -DestinationPath init-application-v0.1.5
-```
- 
-**3. Install via Cargo:**
- 
-```powershell
-cargo install --path init-application-v0.1.5\init-application-0.1.5
-```
- 
-**4. Run:**
- 
-```powershell
-init-application
-```
- 
----
- 
-### macOS / Linux
- 
-**1. Download the source archive:**
- 
+
+### macOS / Linux (Shell)
 ```bash
-curl -L https://github.com/GeorgeMunday/init-application/archive/refs/tags/v0.1.1.tar.gz -o init-application-v0.1.5.tar.gz
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/GeorgeMunday/init-application/releases/latest/download/init-application-installer.sh | sh
 ```
- 
-**2. Extract the archive:**
- 
+
+### From Source (Cargo)
+If you have [Rust](https://www.rust-lang.org/tools/install) installed:
 ```bash
-tar -xzf init-application-v0.1.5.tar.gz
+cargo install --git https://github.com/GeorgeMunday/init-application.git
 ```
- 
-**3. Install via Cargo:**
- 
-```bash
-cargo install --path init-application-v0.1.5/init-application-0.1.5
-```
- 
-**4. Run:**
- 
+
+## 🛠️ Requirements
+
+The tool will prompt you if requirements are missing, but for best results ensure you have:
+- **Node.js** (for frontend templates)
+- **Python** (for Python templates)
+- **.NET SDK** (for C# templates)
+- **VS Code** (if you want the "Open in Editor" feature)
+
+## 🚀 Usage
+
+Run the following command in your terminal:
 ```bash
 init-application
 ```
- 
----
- 
-## Prerequisites
- 
-- [Rust and Cargo](https://www.rust-lang.org/tools/install) must be installed.
+
+### Keyboard Shortcuts
+In the main menu, you can use these shortcuts:
+- `h`: **Help** - Show usage information.
+- `d`: **Dependencies** - Check if required tools (Node.js, etc.) are installed.
+- `o`: **Contribute** - Information on how to contribute to the project.
+- `c`: **Change Destination** - Toggle between creating projects in the current folder or a new subfolder.
+- `q`: **Quit** - Exit the application.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to add a template or fix a bug:
+1. Fork the repository.
+2. Create a new branch.
+3. Submit a pull request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
