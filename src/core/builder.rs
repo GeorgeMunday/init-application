@@ -3,7 +3,7 @@ use std::process::Command;
 use crate::helpers::{folder, code};
 use crate::core::template::ProjectTemplate;
 
-pub fn generate_project(template: &ProjectTemplate) {
+pub fn generate_project(template: &ProjectTemplate, in_folder: bool) {
     println!("\nSelected: {} project\n", template.name);
 
     loop {
@@ -14,15 +14,28 @@ pub fn generate_project(template: &ProjectTemplate) {
         io::stdin()
         .read_line(&mut input)
         .expect("Failed to read input");
+
+        
     
         let input: &str = input.trim();
-        
-        let folder_path = match folder::ensure_projects_dir() {
-            Ok(p) => p,
-            Err(e) => { eprintln!("Failed to ensure projects dir: {}", e); return; }
+
+        if input.is_empty() {
+            println!("\nProject name cannot be empty");
+            continue;
+        }
+
+        let folder_path = if in_folder {
+            std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."))
+        } else {
+            match folder::ensure_projects_dir() {
+                Ok(p) => p,
+                Err(e) => {
+                    eprintln!("Failed to ensure projects dir: {}", e);
+                    return;
+                }
+            }
         };
-       
-    
+
         let project_path = folder_path.join(input);
         if project_path.exists() {
             println!("\nProject {} already exists in {}", input, folder_path.display());
@@ -87,14 +100,14 @@ pub fn generate_project(template: &ProjectTemplate) {
                 Err(e) => eprintln!("Failed to execute {}/{} command: {}",&template.tool_linux,&template.tool_windows, e),
             }
             
-            print!("\nWould you like to open this project in VS Code? (y/N): ");
+            print!("\nWould you like to open this project in your IDE? (y/N): ");
             io::stdout().flush().expect("Failed to flush stdout");
             let mut answer = String::new();
             io::stdin().read_line(&mut answer).unwrap();
             if answer.trim().to_lowercase().starts_with('y') {
                 match code::open(project_path.to_str().unwrap_or("")) {
-                    Ok(_) => println!("Opened project in VS Code."),
-                    Err(e) => eprintln!("Failed to open VS Code: {}", e),
+                    Ok(_) => println!("Opened project in IDE."),
+                    Err(e) => eprintln!("Failed to open IDE: {}", e),
                 }
             }
             break;

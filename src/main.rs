@@ -13,9 +13,8 @@ fn main() {
     let mut in_folder: bool = false;
     loop {
         clear_console();
-
         let templates = load_templates();
-        let (categories, category_map) = welcome(&templates);
+        let (categories, category_map) = welcome(&templates, in_folder);
 
         print!("\nEnter option: ");
         io::stdout().flush().expect("Failed to flush stdout");
@@ -47,7 +46,7 @@ fn main() {
                         let indices = &category_map[category];
 
                         if let Some(template_idx) = show_templates_in_category(category, indices, &templates) {
-                            generate_project(&templates[template_idx]);
+                            generate_project(&templates[template_idx], in_folder);
                         }
                     } else {
                         println!("\nInvalid category number");
